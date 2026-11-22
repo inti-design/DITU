@@ -20,18 +20,25 @@
     for (const tarjeta of document.querySelectorAll("[data-plataforma]")) {
       const plataforma = tarjeta.dataset.plataforma;
       const [nombre, extension] = formatos[plataforma];
-      const archivo = `DITU-${nombre}-v${version}.${extension}`;
-      const url = `${repositorio}/releases/download/v${version}/${archivo}`;
+      const descarga = descargas[plataforma];
+      const pruebas = descarga?.pruebas === true;
+      const base = `DITU-${nombre}-v${version}`;
+      const raiz = `${repositorio}/releases/download/v${version}/`;
+      const archivoPruebas = `${base}-pruebas.${extension}`;
+      const archivo = pruebas && descarga.url === raiz + archivoPruebas ? archivoPruebas : `${base}.${extension}`;
+      const url = raiz + archivo;
       tarjeta.querySelector(".archivo").textContent = archivo;
-      if (descargas[plataforma]?.disponible !== true || descargas[plataforma].url !== url) continue;
+      if (descarga?.disponible !== true || descarga.url !== url) continue;
 
       const boton = tarjeta.querySelector(".boton");
+      const estado = tarjeta.querySelector(".estado");
       const enlace = document.createElement("a");
       enlace.className = boton.className;
       enlace.href = url;
       enlace.textContent = boton.textContent;
+      enlace.setAttribute("aria-describedby", estado.id);
       tarjeta.classList.add("disponible");
-      tarjeta.querySelector(".estado").textContent = "Disponible";
+      estado.textContent = pruebas ? "Versión de prueba" : "Disponible";
       boton.replaceWith(enlace);
     }
   }
