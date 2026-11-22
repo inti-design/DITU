@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "repositorio": "https://github.com/inti-design/DITU",
+  "descargas": {
+    "windows": {
+      "disponible": true,
+      "url": "https://github.com/inti-design/DITU/releases/download/v1.0.0/DITU-Windows-v1.0.0.zip"
+    },
+    "linux": {
+      "disponible": false,
+      "url": null
+    },
+    "android": {
+      "disponible": false,
+      "url": null
+    }
+  }
+}

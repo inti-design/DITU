@@ -1,0 +1,139 @@
+@font-face {
+  font-family: "Ditu Alpha";
+  src: url("../images/DituAlpha-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --fondo: #0b0b0f;
+  --texto: #faf1eb;
+  --suave: #c7b8b5;
+  --acento: #ff9369;
+  --borde: #483336;
+  --letra: system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 60% 30rem at 50% 8rem, #4c201c75, transparent),
+    var(--fondo);
+  color: var(--texto);
+  font: 1rem/1.55 var(--letra);
+}
+h1, h2, p { margin: 0; }
+#estrellas { position: fixed; z-index: -1; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.contenedor { width: min(1100px, calc(100% - 64px)); margin-inline: auto; }
+
+.portada { padding-block: clamp(56px, 8vw, 112px) 2rem; text-align: center; }
+h1 {
+  color: #fff0e9;
+  font: 400 clamp(5.4rem, 12vw, 9.5rem)/.94 "Ditu Alpha", Impact, var(--letra);
+  letter-spacing: -.045em;
+}
+.subtitulo {
+  color: var(--acento);
+  font-size: clamp(1rem, 2.7vw, 1.42rem);
+  font-weight: 850;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-top: .55rem;
+}
+.estudio { color: var(--suave); margin-top: .55rem; font-size: .94rem; }
+.introduccion { margin: 2rem auto 0; max-width: 36ch; font-size: clamp(1.05rem, 2vw, 1.2rem); }
+
+.plataformas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.15rem, 2.4vw, 1.65rem);
+  background: linear-gradient(154deg, #21171bf7, #141217fa 66%);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.tarjeta:focus-within { border-color: var(--acento); }
+@media (hover: hover) {
+  .tarjeta:hover { border-color: #87503e; transform: translateY(-3px); }
+}
+.tarjeta-cabecera { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.icono {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  aspect-ratio: 1;
+  color: var(--acento);
+  background: #36201f;
+  border: 1px solid #563331;
+  border-radius: 10px;
+}
+.icono svg { width: 1.55rem; }
+.formato {
+  color: #f1bcab;
+  border: 1px solid #65453f;
+  border-radius: 5px;
+  padding: .2rem .45rem;
+  font: 700 .76rem/1.25 var(--letra);
+  letter-spacing: .07em;
+}
+.tarjeta h2 { font-size: clamp(1.2rem, 2.3vw, 1.55rem); line-height: 1.2; letter-spacing: -.028em; }
+.archivo {
+  color: var(--suave);
+  font: .79rem/1.5 ui-monospace, Consolas, monospace;
+  margin-block: .55rem .85rem;
+  overflow-wrap: anywhere;
+}
+.archivo:empty { display: none; }
+.estado { color: var(--suave); font-size: .86rem; margin: auto 0 .65rem; }
+.disponible .estado { color: #ffc3a8; }
+.boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 48px;
+  padding: .65rem .55rem;
+  border: 1px solid var(--acento);
+  border-radius: 6px;
+  background: var(--acento);
+  color: #20110c;
+  font: 800 .79rem/1.3 var(--letra);
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .18s ease;
+}
+a.boton:hover { background: #ffc0a3; }
+a.boton:focus-visible { outline: 3px solid #ffc0a3; outline-offset: 4px; }
+.boton:disabled { border-color: #574144; background: #2b2228; color: #c7b8b5; cursor: not-allowed; }
+
+.aviso { margin-top: 1rem; text-align: center; color: #ffbd9e; }
+.aviso:empty { display: none; }
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .4rem 1.2rem;
+  border-top: 1px solid var(--borde);
+  margin-top: clamp(2.4rem, 6vw, 5rem);
+  padding-block: 1.4rem;
+  color: var(--suave);
+  font-size: .9rem;
+}
+.pie strong { color: var(--texto); font-weight: 650; }
+
+@media (max-width: 700px) {
+  .contenedor { width: calc(100% - 36px); }
+  .plataformas { grid-template-columns: 1fr; }
+  .portada { padding-bottom: 1.6rem; }
+  .pie { flex-direction: column; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta, .boton { transition: none; }
+  .tarjeta:hover { transform: none; }
+}
