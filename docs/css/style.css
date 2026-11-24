@@ -137,3 +137,6 @@ a.boton:focus-visible { outline: 3px solid #ffc0a3; outline-offset: 4px; }
   .tarjeta, .boton { transition: none; }
   .tarjeta:hover { transform: none; }
 }
+
+#launcher-cta[hidden] { display: none; }
+.launcher-cta { width: fit-content; max-width: 100%; margin: 18px auto 0; }

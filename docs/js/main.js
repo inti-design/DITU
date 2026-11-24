@@ -7,15 +7,31 @@
     android: ["Android", "apk"]
   };
 
+  function mostrarLauncher(config, repositorio) {
+    if (config?.disponible !== true || repositorio !== "https://github.com/inti-design/DITU" ||
+        typeof config.version !== "string" || !/^\d+\.\d+\.\d+$/.test(config.version) ||
+        config.etiqueta !== "launcher-v" + config.version) return;
+
+    const archivo = "DITU-Launcher-Windows-x64-v" + config.version + "-Setup.exe";
+    const url = repositorio + "/releases/download/" + config.etiqueta + "/" + archivo;
+    if (config.archivos?.windows?.disponible !== true || config.archivos.windows.url !== url) return;
+
+    const boton = document.getElementById("launcher-cta");
+    boton.href = url;
+    boton.hidden = false;
+  }
+
   async function cargarDescargas() {
     const respuesta = await fetch("./downloads.json", { cache: "no-cache" });
     if (!respuesta.ok) throw new Error("Configuración no disponible");
-    const { version, repositorio, descargas } = await respuesta.json();
+    const { version, repositorio, descargas, launcher } = await respuesta.json();
     if (typeof version !== "string" || !/^\d+\.\d+\.\d+$/.test(version) ||
         typeof repositorio !== "string" || !/^https:\/\/github\.com\/[\w-]+\/DITU$/.test(repositorio) ||
         !descargas) {
       throw new Error("Configuración de descargas inválida");
     }
+
+    mostrarLauncher(launcher, repositorio);
 
     for (const tarjeta of document.querySelectorAll("[data-plataforma]")) {
       const plataforma = tarjeta.dataset.plataforma;

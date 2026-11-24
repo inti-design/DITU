@@ -1,6 +1,17 @@
 {
   "version": "1.1.0",
   "repositorio": "https://github.com/inti-design/DITU",
+  "launcher": {
+    "version": "1.0.0",
+    "etiqueta": "launcher-v1.0.0",
+    "disponible": true,
+    "archivos": {
+      "windows": {
+        "disponible": true,
+        "url": "https://github.com/inti-design/DITU/releases/download/launcher-v1.0.0/DITU-Launcher-Windows-x64-v1.0.0-Setup.exe"
+      }
+    }
+  },
   "descargas": {
     "windows": {
       "disponible": true,
