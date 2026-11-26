@@ -38,8 +38,10 @@
       const [nombre, extension] = formatos[plataforma];
       const descarga = descargas[plataforma];
       const pruebas = descarga?.pruebas === true;
-      const base = `DITU-${nombre}-v${version}`;
-      const raiz = `${repositorio}/releases/download/v${version}/`;
+      const versionPlataforma = descarga?.version ?? version;
+      if (typeof versionPlataforma !== "string" || !/^\d+\.\d+\.\d+$/.test(versionPlataforma)) continue;
+      const base = `DITU-${nombre}-v${versionPlataforma}`;
+      const raiz = `${repositorio}/releases/download/v${versionPlataforma}/`;
       const archivoPruebas = `${base}-pruebas.${extension}`;
       const archivo = pruebas && descarga.url === raiz + archivoPruebas ? archivoPruebas : `${base}.${extension}`;
       const url = raiz + archivo;
@@ -54,7 +56,9 @@
       enlace.textContent = boton.textContent;
       enlace.setAttribute("aria-describedby", estado.id);
       tarjeta.classList.add("disponible");
-      estado.textContent = pruebas ? "Versión de prueba" : "Disponible";
+      estado.textContent = descarga.actualizacionPendiente === true
+        ? `${versionPlataforma} · Actualización próximamente`
+        : `${versionPlataforma} · ${pruebas ? "Versión de prueba" : "Disponible"}`;
       boton.replaceWith(enlace);
     }
   }
