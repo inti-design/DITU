@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repositorio": "https://github.com/inti-design/DITU",
   "launcher": {
     "version": "1.0.0",
@@ -15,18 +15,23 @@
   "descargas": {
     "windows": {
       "disponible": true,
-      "pruebas": true,
-      "url": "https://github.com/inti-design/DITU/releases/download/v1.1.0/DITU-Windows-v1.1.0.zip"
+      "pruebas": false,
+      "url": "https://github.com/inti-design/DITU/releases/download/v1.2.0/DITU-Windows-v1.2.0.zip",
+      "version": "1.2.0"
     },
     "linux": {
       "disponible": true,
       "pruebas": true,
-      "url": "https://github.com/inti-design/DITU/releases/download/v1.1.0/DITU-Linux-v1.1.0.tar.gz"
+      "url": "https://github.com/inti-design/DITU/releases/download/v1.1.0/DITU-Linux-v1.1.0.tar.gz",
+      "version": "1.1.0",
+      "actualizacionPendiente": true
     },
     "android": {
       "disponible": true,
       "pruebas": true,
-      "url": "https://github.com/inti-design/DITU/releases/download/v1.1.0/DITU-Android-v1.1.0-pruebas.apk"
+      "url": "https://github.com/inti-design/DITU/releases/download/v1.1.0/DITU-Android-v1.1.0-pruebas.apk",
+      "version": "1.1.0",
+      "actualizacionPendiente": true
     }
   }
 }
